@@ -1,0 +1,68 @@
+server:
+  port: '8082'
+welcome:
+  message: Welcome to Our Revision World!!!
+spring:
+  profiles:
+    active: dev
+
+
+---
+spring:
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/revapp
+    password: Welcome123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  config:
+    activate:
+      on-profile: dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"
+
+---
+
+spring:
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/revapp-qa
+    password: Welcome123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  config:
+    activate:
+      on-profile: qa
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"
+
+---
+
+spring:
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/revapp-prod
+    password: Welcome123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  config:
+    activate:
+      on-profile: prod
+
+
+
+
